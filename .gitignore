@@ -1,0 +1,72 @@
+### Общие системные файлы ###
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
+
+### Логи ###
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+logs/
+
+### IDE ###
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+### Фронтенд (React) ###
+# Зависимости
+frontend_react/node_modules/
+frontend_react/.pnp
+.pnp.js
+
+# Сборка
+frontend_react/dist/
+frontend_react/dist-ssr/
+frontend_react/build/
+frontend_react/.cache/
+frontend_react/coverage/
+
+# Environment
+frontend_react/.env*
+frontend_react/.eslintcache
+frontend_react/*.local
+
+# Тесты и отчёты
+frontend_react/junit.xml
+frontend_react/__snapshots__/
+
+### Бэкенд (Go) ###
+# Бинарники
+backend/bin/
+backend/main.exe
+
+# Кэш зависимостей
+backend/go.sum
+backend/vendor/
+
+# Тестовые данные
+backend/*.test
+backend/coverage.txt
+
+### Прочее ###
+# Временные файлы
+*.tmp
+*.temp
+
+# Кэш
+.cache/
+.temp/
+*.tern-project
+
+# Docker
+docker-compose.override.yml

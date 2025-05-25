@@ -1,0 +1,251 @@
+:root {
+  --bg-dark: #121212;
+  --bg-panel: #1e1e1e;
+  --text-primary: #f1f1f1;
+  --text-secondary: #bbbbbb;
+  --border-color: #2c2c2c;
+  --button-bg: #2a2a2a;
+  --button-bg-hover: #3a3a3a;
+  --success: #4caf50;
+  --danger: #f44336;
+  --font-main: 'Inter', system-ui, sans-serif;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+textarea:-webkit-autofill, 
+textarea:-webkit-autofill:hover, 
+textarea:-webkit-autofill:focus {
+  background-color: #151515 !important;
+  color: #f1f1f1 !important;
+  -webkit-text-fill-color: #f1f1f1 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+}
+
+
+
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 20px;
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+}
+
+.header a {
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.header a:hover,
+.exit a:hover {
+  background-color: var(--button-bg-hover);
+  color: var(--danger);
+}
+
+.headForum {
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.nameForum {
+  font-size: 1.5rem;
+}
+
+.content {
+  padding: 1rem;
+  flex: 1;
+}
+
+.login,
+.news,
+.profile,
+.home {
+  text-align: center;
+  margin: 0 auto;
+  width: 85%;
+  max-width: 700px;
+  background-color: var(--bg-panel);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.home p {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.login form,
+.add-news {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.login form div,
+.add-news div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input, textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #151515;
+  color: #f1f1f1;
+  border: 1px solid #2c2c2c;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  background-color: #1b1b1b;
+  border-color: #444;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: var(--button-bg);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: var(--button-bg-hover);
+}
+
+.addButton {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #777;
+}
+
+.add-class {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.add-news {
+  background-color: var(--bg-panel);
+  padding: 30px;
+  border-radius: 10px;
+  width: 85%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: var(--text-primary);
+}
+
+.error {
+  color: var(--danger);
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.news-item {
+  background-color: #181818;
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.news-item:hover {
+  background-color: #222;
+}
+
+.logout-button {
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.logout-button:hover {
+  background-color: var(--button-bg-hover);
+  color: var(--danger);
+}
+
+.date {
+  margin-right: 0.5em;
+  color: var(--text-secondary);
+}
+
+.bigNumber {
+  font-family: var(--font-main);
+  font-size: 2rem;
+  text-align: center;
+  display: none;
+}
+
+.joke {
+  font-family: fantasy;
+  font-weight: bold;
+  color: var(--text-primary);
+  background-color: var(--bg-panel);
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 600px;
+  text-align: center;
+}
+
