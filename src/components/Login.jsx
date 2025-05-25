@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  // создание состояний
-  const [email, setUsername] = useState(''); // управление состоянием формы
+  const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // перенаправление после входа
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Отменяет стандартное действие браузера, предотвращает перезагрузку страницы при отправке формы
@@ -36,15 +35,28 @@ function Login() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-          },
-        });
+                  },
+          });
 
-        if (adminCheck.ok){
+          const blockedCheck = await fetch(`http://localhost:8080/auth/block-status/${data.userId}`, {
+            method: 'GET',
+            headers: {
+            'Content-Type': 'application/json',
+                  },
+          });
+
+        if (adminCheck.ok && blockedCheck.ok){
           const adminData = await adminCheck.json();
-          if (adminData.isAdmin === true){
-            localStorage.setItem('isAdmin', 'true');
-          }else{
-            localStorage.setItem('isAdmin', 'false');
+          const blockedData = await blockedCheck.json();
+          if (blockedData.isBlocked === false){
+              if (adminData.isAdmin === true){
+              localStorage.setItem('isAdmin', 'true');
+            }else{
+              localStorage.setItem('isAdmin', 'false');
+            }
+          }else {
+            localStorage.clear();
+            navigate('/register')
           }
         }
         navigate('/')
@@ -61,11 +73,6 @@ function Login() {
     }
   };
 
-
-  // Форма с обработчиком onSubmit, который вызывает функцию handleSubmit при отправке формы
-  // label - текстовая метка для поля ввода
-  // onChange - обновляет состояние username при каждом изменении
-  // required - обязательное поле
   return (
     <div className="login">
       <h1>Вход</h1>

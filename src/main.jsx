@@ -5,6 +5,8 @@ import './index.css'
 import App from './App'
 import Login from './components/Login'
 import Register from './components/Register'
+import Votes from './components/Votings'
+import VotePage from './components/VotePage'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>Главная страница</div> // или твой компонент Home
+        element: <Votes/>
       },
       { 
         path: "login",
@@ -22,7 +24,12 @@ const router = createBrowserRouter([
       { 
         path: "register",
         element: <Register /> 
+      },
+      {
+        path: "vote/:id",
+        element: <VotePage />
       }
+
     ]
   }
 ])

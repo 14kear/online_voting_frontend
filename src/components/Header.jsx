@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
 
@@ -41,8 +40,6 @@ function Header() {
       </div>
       <nav className="headForum">
         <div>
-          <Link to="/">Главная</Link>
-          <Link to="/">Голосования</Link>
         </div>
         <div className="exit">
           {!isAuthenticated && <Link className="auth" to="/login">Вход</Link>}
