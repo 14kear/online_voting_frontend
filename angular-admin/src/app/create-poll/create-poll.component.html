@@ -1,0 +1,21 @@
+<div class="create-poll-container">
+  <h2>Create a New Poll</h2>
+  <form [formGroup]="pollForm" (ngSubmit)="submit()">
+    <input formControlName="title" placeholder="Title" />
+    <input formControlName="description" placeholder="Description" />
+    <select formControlName="status">
+        <option value="active">Active</option>
+        <option value="closed">Closed</option>
+    </select>
+
+    <div formArrayName="options">
+        <div *ngFor="let opt of options.controls; let i = index">
+        <input [formControlName]="i" placeholder="Option {{i + 1}}" />
+        <button type="button" (click)="removeOption(i)">Remove</button>
+        </div>
+    </div>
+    <button type="button" (click)="addOption()">Add Option</button>
+
+    <button type="submit">Create Poll</button>
+  </form>
+</div>
