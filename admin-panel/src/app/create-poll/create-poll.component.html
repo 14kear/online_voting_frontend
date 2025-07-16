@@ -1,0 +1,70 @@
+<div class="d-flex align-items-center justify-content-center mt-5">
+  <div class="card shadow-lg p-4 text-white border-0" style="min-width: 340px; max-width: 500px; width: 100%; border-radius: 18px; background: #1e1e1e;">
+    <a
+      routerLink="/admin"
+      class="text-white text-decoration-none d-inline-flex align-items-center mb-3"
+    >
+      <span class="fs-4 me-2">←</span>
+      Назад в админ-панель
+    </a>
+
+    <h2 class="text-center mb-4 fw-bold">Создать новый опрос</h2>
+
+    <form [formGroup]="pollForm" (ngSubmit)="submit()">
+      
+      <div class="mb-3">
+        <input
+          formControlName="title"
+          class="form-control bg-secondary text-white border-0"
+          placeholder="Название опроса"
+          [class.is-invalid]="pollForm.get('title')?.invalid && pollForm.get('title')?.touched"
+        />
+        <div class="invalid-feedback">Введите название опроса</div>
+      </div>
+
+      <div class="mb-3">
+        <input
+          formControlName="description"
+          class="form-control bg-secondary text-white border-0"
+          placeholder="Описание"
+          [class.is-invalid]="pollForm.get('description')?.invalid && pollForm.get('description')?.touched"
+        />
+        <div class="invalid-feedback">Введите описание</div>
+      </div>
+
+      <div formArrayName="options" class="mb-3">
+        <div *ngFor="let opt of options.controls; let i = index" class="input-group mb-2">
+          <input
+            [formControlName]="i"
+            class="form-control bg-secondary text-white border-0"
+            placeholder="Вариант {{ i + 1 }}"
+            [class.is-invalid]="opt.invalid && opt.touched"
+          />
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="removeOption(i)"
+            *ngIf="options.length > 1"
+          >
+            Удалить
+          </button>
+          <div class="invalid-feedback d-block" *ngIf="opt.invalid && opt.touched">
+            Вариант не должен быть пустым
+          </div>
+        </div>
+      </div>
+
+      <div class="d-grid mb-3">
+        <button type="button" class="btn btn-success" (click)="addOption()">+ Добавить вариант</button>
+      </div>
+
+      <div class="d-flex justify-content-center gap-2">
+        <button type="submit" class="btn btn-success" [disabled]="loading">Создать</button>
+        <button type="button" class="btn btn-secondary" (click)="pollForm.reset()">Очистить</button>
+      </div>
+    </form>
+
+    <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+    <div *ngIf="success" class="alert alert-success mt-3">{{ success }}</div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="d-flex align-items-center justify-content-center">
+  <div class="card p-4 bg-dark text-white" style="min-width:320px; max-width:400px; width:100%;">
+    <h2 class="text-center mb-4">Вход</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="mb-3">
+        <input formControlName="email" class="form-control bg-secondary text-white border-0" placeholder="Логин" />
+      </div>
+      <div class="mb-3">
+        <input type="password" formControlName="password" class="form-control bg-secondary text-white border-0" placeholder="Пароль" />
+      </div>
+      <div *ngIf="error" class="alert alert-danger py-2">{{ error }}</div>
+      <button class="btn btn-success w-100" [disabled]="loading">Войти</button>
+    </form>
+  </div>
+</div>

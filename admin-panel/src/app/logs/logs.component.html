@@ -1,0 +1,60 @@
+<div
+  class="container py-4"
+  style="
+    background: #1e1e1e;
+    border-radius: 18px;
+    margin: auto;
+    color: white;
+  "
+>
+  <a
+    routerLink="/admin"
+    class="text-white text-decoration-none d-inline-flex align-items-center mb-3"
+    style="cursor: pointer;"
+  >
+    <span class="fs-4 me-2">←</span>
+    Назад в админ-панель
+  </a>
+
+  <h3 class="mb-3">Логи системы</h3>
+
+  <button class="btn btn-success mb-3" (click)="loadLogs()" [disabled]="loading">
+    {{ loading ? 'Загрузка...' : 'Обновить логи' }}
+  </button>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div style="overflow-x: auto;">
+    <table
+      class="table table-dark table-striped table-hover"
+      *ngIf="logs.length; else noLogs"
+    >
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User ID</th>
+          <th>Действие</th>
+          <th>Poll ID</th>
+          <th>Option ID</th>
+          <th>Result ID</th>
+          <th>Дата создания</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of logs">
+          <td>{{ log.ID }}</td>
+          <td>{{ log.UserID }}</td>
+          <td>{{ log.Action }}</td>
+          <td><a href="http://localhost:5173/edit-vote/{{log.PollID}}" target="_blank" >редактировать</a></td>
+          <td>{{ log.OptionID ?? '-' }}</td>
+          <td>{{ log.ResultID ?? '-' }}</td>
+          <td>{{ log.CreatedAt | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noLogs>
+    <p>Логов пока нет.</p>
+  </ng-template>
+</div>
